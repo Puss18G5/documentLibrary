@@ -1,0 +1,200 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage[toc,page]{appendix}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{comment}
+ 
+\pagestyle{plain}
+\fancyhf{}
+\rhead{Version: 0.2}
+\chead{Date: 2018-09-22, Doc. Number: PUSS18003}
+\lhead{Resp.: TG}
+\title{SVVS – Software Verification and Validation Specification}
+
+\usepackage{lipsum}
+\begin{document}
+
+\author{TG}
+
+\maketitle
+\thispagestyle{fancy}
+\tableofcontents
+\newpage
+\section*{Document history}
+\begin{tabular}{ l l l l}
+  Ver. & Date & Resp. & Description \\
+  \hline
+  0.x & 2018-09-16 & TG & First baseline version \\
+  0.2 & 2018-09-22 & TG & Second baseline version \\
+\end{tabular}
+\section{Introduction}
+This document descripes how the "Grupp 5 project" should be verified
+\section{Reference documents}
+\begin{enumerate}
+    \item Programvaruutveckling för Stora System – Projekthandledning, v 2.5
+    \item Software Requirments Specifications, v. 0.x
+\end{enumerate}
+\section{Overview}
+During the project, three formal reviews are carried out
+\begin{enumerate}
+    \item Software Specification Review (SSR)
+    \begin{enumerate}[label=\alph*]
+        \item SDP
+        \item SRS
+        \item SVVS
+    \end{enumerate}
+    \item Preliminary Design Review (PDR)
+    \begin{enumerate}[label=\alph*]
+        \item SVVI
+        \item STLDD
+    \end{enumerate}
+    \item Product Review (PR)
+    \begin{enumerate}[label=\alph*]
+        \item SVVR
+        \item SSD
+        \item PFR
+    \end{enumerate}
+\end{enumerate}
+
+These formal reviews are carried out as described in Ref. 1.
+
+Each formal review is proceeded by an informal review, without any customer
+representative involved, as described in Ref. 1. The informal reviews are
+scheduled so that updated material can be delivered to the formal review.
+
+In addition to the informal reviews listed above the the SDDD should also
+be reviewed by the development group.
+
+\section{Test cases}
+The tests are carried out in the following phases:\\\\
+\textbf{Unit test:} Basic code functionality testing is carried out by individual developers and developer groups
+before the tested parts are integrated with any other group’s code. This
+is done informally, and no documentation is needed.\\\\
+\textbf{Regression test:} All previously specified test cases are run during regression test. This is done automatically, whenever a pull request is created or a branch is merged into master, through a Jenkins solution and is not manually documented.\\\\
+\textbf{Function test:} Here individual, but complete, functions are tested as far as
+possible before the function is merged with other newly developed functions in the system. This is done with mainly shell scripts and manual running by the test group. The test group also documents and approves the tests.\\\\
+\textbf{System test:} Here, general tests for the whole system are carried out. This is done manually by the test group. The test group also documents and approves the tests.\\\\
+\textbf{Acceptance test:} These tests are carried out by the customer during the
+last review (PR). Samples from all specified test cases are used together
+with a number of test cases that are decided by the department
+\section{ Requirements checked in reviews
+}
+In reviews all requirements should be checked by the reviewers.
+
+The following requirements (according to Ref. 2) are only verified through
+reviews: 6.4.3, 6.7.4, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 8.1, 8.2, 8.3.
+
+\section{Appendices}
+There are two appendices:
+\begin{enumerate}[label=\Alph*]
+    \item System test specification
+    \item Function test specification
+\end{enumerate}
+\newpage
+\appendix
+\section{System test specification}
+After each test case the tested requirements according to Ref. 2 are listed.
+
+\subsection{Quality requirements}
+
+\begin{enumerate}[start=1,label={ST1.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Successful verification of codes using Unit-test [SRS req. 7.1]
+\item Successful accessing the website using Firefox on computers running Windows 10 [SRS req. 7.4]
+\item Successful accessing the website using Chrome on computers running Windows 10 [SRS req. 7.4]
+\item Successful accessing the website using Opera on computers running Windows 10 [SRS req. 7.4]
+\item Successful accessing the website using Edge on computers running Windows 10 [SRS req. 7.4]
+\item Successful accessing the website using Firefox on computers running  MacOs  10.12 "Sierra" [SRS req. 7.4]
+\item Successful accessing the website using Chrome on computers running  MacOs  10.12 "Sierra" [SRS req. 7.4]
+\item Successful accessing the website using Opera on computers running  MacOs  10.12 "Sierra" [SRS req. 7.4]
+\item Successful accessing the website using Safari on computers running  MacOs  10.12 "Sierra" [SRS req. 7.4]
+\item Successful accessing the website Firefox on computers  running Ubuntu 18.04 [SRS req. 7.4]
+\item Successful accessing the website Firefox on computers  running Ubuntu 18.04 [SRS req. 7.4]
+\item Successful accessing the website within two seconds using one of the  computer rooms in ”E-Huset” [SRS req. 7.5]
+\item Successful accessing any of the redirect links on the web-page that belongs to the system within two seconds using one of the computer rooms in ”E-Huset” [SRS req. 7.5]
+\end{enumerate}
+
+\subsection{Data}
+
+\begin{enumerate}[start=1,label={ST2.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Create account, illegal characters' type and length in username or password [SRS reg 6.6.1]
+\item Create account, illegal characters' type and length in the email field [SRS reg 6.6.2]
+\item Search for a ride, illegal format used in arrival and departure time field [SRS reg 6.6.3]
+\item Create a ride, illegal format used in arrival and departure time field [SRS reg 6.6.3]
+\item Search for a ride, illegal characters' type used in arrival and departure location field [SRS reg 6.6.4]
+\item Create a ride, illegal characters' type used in arrival and departure location field [SRS reg 6.6.4]
+\item Search for a ride, user checks on being both driver and passenger [SRS reg 6.6.5]
+\item Create ride, user checks on being both driver and passenger [SRS reg 6.6.5]
+\end{enumerate}
+
+\newpage
+\section{Function test specification}
+After each test case the tested requirements according to Ref. 2 are listed.
+
+\subsection{Creating account}
+
+\begin{enumerate}[start=1,label={FT1.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Successful creation of account [SRS req. 6.1.1]
+\item Create account, illegal or no username [SRS req. 6.1.2, 6.6.1]
+\item Create account, illegal or no email [SRS req. 6.1.2, 6.6.2]
+\item Create account, illegal or no password [SRS req. 6.1.2, 6.6.1]
+\item Create account, email already belongs to an account [SRS req. 6.1.3]
+\item Create account, username is already taken [SRS req. 6.1.3]
+\end{enumerate}
+
+\subsection{Log in and log out}
+
+\begin{enumerate}[start=1,label={FT2.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Successful login [SRS req. 6.2.1, 6.6.1, 6.6.2]
+\item Login, incorrect username [SRS req. 6.2.2]
+\item Login, incorrect password [SRS req. 6.2.2]
+\item Login five times, incorrect username or password [SRS req. 6.2.2, 6.2.3]
+\item Successful logout [SRS req. 6.2.4]
+\end{enumerate}
+
+\subsection{Creating rides}
+
+\begin{enumerate}[start=1,label={FT3.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Successfully create ride [SRS req. 6.3.1]
+\item Create ride, illegal departure time [SRS req. 6.3.2, 6.6.4]
+\item Create ride, illegal arrival time [SRS req. 6.3.2, 6.6.4]
+\item Create ride, illegal number
+of free seats [SRS req. 6.3.2]
+\item Create ride, illegal departure location [SRS req. 6.3.2]
+\item Create ride, illegal arrival location [SRS req. 6.3.2]
+\item Successful cancellation of ride [SRS req. 6.3.3]
+\item Create ride, arrival time earlier than departure time [SRS req. 6.3.5]
+\item Create ride, departure time which has already passed [SRS req. 6.3.4]
+\item Create ride, arrival time which has already passed [SRS req. 6.3.4]
+\item Create ride, unreasonable departure time based on previous rides [SRS req. 6.3.7]
+\item Create ride, the user is already a driver in another ride at the same time [SRS req. 6.3.6, 6.6.5]
+\item Create ride, the user is already a passenger in another ride at the same time [SRS req. 6.3.6, 6.6.5]
+\end{enumerate}
+
+\subsection{Searching and joining rides}
+
+\begin{enumerate}[start=1,label={FT4.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Successfully joins a ride as a passenger [SRS req. 6.4.1]
+\item Join a ride as passenger, the user has already joined another ride that takes place during the same time [SRS req. 6.4.2]
+\item Successful kick of another user from the ride, driver [SRS req. 6.4.4]
+\item Successful ban of another user from joining the ride, driver  [SRS req. 6.4.4]
+\item Search ride [SRS req. 6.4.5]
+\end{enumerate}
+
+\subsection{Displaying joined rides and deleting a ride}
+
+\begin{enumerate}[start=1,label={FT5.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Successful deletion of a ride, driver [SRS req. 6.5.1]
+\end{enumerate}
+
+\subsection{Administration}
+
+\begin{enumerate}[start=1,label={FT6.\arabic* }, leftmargin = 1.1cm, nolistsep]
+\item Successful addition of a user, administrator [SRS req. 6.7.1]
+\item Successful ban of a user, administrator [SRS req. 6.7.2]
+\item Successful deletion of a user, administrator [SRS req. 6.7.3]
+\item Successful deletion of a ride, administrator [SRS req. 6.7.5]\end{enumerate}
+
+\end{document}
